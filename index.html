@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentine Proposal</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             text-align: center;
-            background-color: #ffccd5;
+            background: linear-gradient(to right, #ff9a9e, #fecfef);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,31 +19,33 @@
         }
         .container {
             background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             max-width: 400px;
+            animation: fadeIn 1s ease-in-out;
         }
         .question {
-            font-size: 2rem;
-            font-weight: bold;
+            font-size: 2.2rem;
+            font-weight: 600;
             margin-bottom: 20px;
-            color: #c9184a;
+            color: #d63384;
         }
         .btn {
             background-color: #ff4d6d;
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 14px 24px;
             font-size: 1.2rem;
             margin: 10px;
             cursor: pointer;
-            border-radius: 10px;
+            border-radius: 50px;
             transition: 0.3s;
         }
         .btn:hover {
             background-color: #ff1e50;
             transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         .details {
             display: none;
@@ -49,36 +53,34 @@
             font-size: 1.5rem;
             color: #c9184a;
             animation: fadeIn 1s ease-in-out;
+            background: #fff0f3;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="question">Will you be my Valentine? ❤️</div>
-        <button class="btn" onclick="showDetails()">Yes</button>
-        <button class="btn" onclick="showDetails()">Yes</button>
-        <button class="btn" onclick="showDetails()">Yes</button>
+        <div class="question">Will you be my Valentine Ads? ❤️</div>
+        <button class="btn" onclick="showDetails()">Yessss</button>
+        <button class="btn" onclick="showDetails()">Super Yesssssss</button>
+        <button class="btn" onclick="showDetails()">Kya battamizi hai!</button>
         <div class="details" id="details">
             <p><strong>Venue:</strong> Cyberhub</p>
             <p><strong>Time:</strong> 8 PM</p>
-            <p><strong>Dress:</strong> Kuch bhi pehen, hot hi lgegi! 😘</p>
+            <p><strong>Dress code:</strong> Kuch bhi pehen, hot hi lgegi! 😘</p>
         </div>
     </div>
     
     <script>
         function showDetails() {
-            document.querySelector('.container').innerHTML = `
-                <div class="question">Yay! See you there! ❤️</div>
-                <div class="details">
-                    <p><strong>Venue:</strong> Cyberhub</p>
-                    <p><strong>Time:</strong> 8 PM</p>
-                    <p><strong>Dress:</strong> Kuch bhi pehen, hot hi lgegi! 😘</p>
-                </div>
-            `;
+            document.querySelector('.question').innerHTML = "Yay! See you there! ❤️";
+            document.getElementById('details').style.display = 'block';
         }
     </script>
 </body>
