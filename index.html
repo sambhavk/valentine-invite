@@ -16,17 +16,19 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            padding: 20px;
         }
         .container {
             background: white;
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            max-width: 400px;
+            max-width: 90%;
+            width: 400px;
             animation: fadeIn 1s ease-in-out;
         }
         .question {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 600;
             margin-bottom: 20px;
             color: #d63384;
@@ -36,21 +38,23 @@
             color: white;
             border: none;
             padding: 14px 24px;
-            font-size: 1.2rem;
+            font-size: 1rem;
             margin: 10px;
             cursor: pointer;
             border-radius: 50px;
             transition: 0.3s;
+            width: 100%;
+            max-width: 250px;
         }
         .btn:hover {
             background-color: #ff1e50;
-            transform: scale(1.1);
+            transform: scale(1.05);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         .details {
             display: none;
             margin-top: 20px;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: #c9184a;
             animation: fadeIn 1s ease-in-out;
             background: #fff0f3;
@@ -62,11 +66,23 @@
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @media (max-width: 600px) {
+            .question {
+                font-size: 1.8rem;
+            }
+            .btn {
+                font-size: 0.9rem;
+                padding: 12px 20px;
+            }
+            .details {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="question">Will you be my Valentine Ads? ❤️</div>
+        <div class="question">Will you be my Valentine? ❤️</div>
         <button class="btn" onclick="showDetails()">Yessss</button>
         <button class="btn" onclick="showDetails()">Super Yesssssss</button>
         <button class="btn" onclick="showDetails()">Kya battamizi hai!</button>
