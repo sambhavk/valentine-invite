@@ -26,7 +26,7 @@
             max-width: 90%;
             width: 400px;
             animation: fadeIn 1s ease-in-out;
-            display: none; /* Hidden until correct password is entered */
+            display: none;
         }
         .question {
             font-size: 2rem;
@@ -96,6 +96,12 @@
         .submit-btn:hover {
             background-color: #ff1e50;
         }
+        .error {
+            color: red;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -106,6 +112,7 @@
         <input type="password" id="password" class="password-input" placeholder="Enter password">
         <br>
         <button class="submit-btn" onclick="checkPassword()">Submit</button>
+        <p class="error" id="error-message">Sorry! Muggles not allowed</p>
     </div>
 
     <!-- Main Content (Hidden Initially) -->
@@ -122,15 +129,25 @@
     </div>
     
     <script>
-        function checkPassword() {
-            var enteredPassword = document.getElementById("password").value;
-            var correctPassword = "ads"; // Change this password as needed
+        async function hashPassword(password) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(password);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+        }
 
-            if (enteredPassword === correctPassword) {
+        async function checkPassword() {
+            const enteredPassword = document.getElementById("password").value;
+            const hashedEnteredPassword = await hashPassword(enteredPassword);
+
+            const correctHashedPassword = "788eb2efc52660fe41472319f0d2c623be6540c956921b3632fcc934bf1be10d"; 
+
+            if (hashedEnteredPassword === correctHashedPassword) {
                 document.getElementById("password-container").style.display = "none";
                 document.getElementById("main-content").style.display = "block";
             } else {
-                alert("Wrong password! Try again.");
+                document.getElementById("error-message").style.display = "block";
             }
         }
 
@@ -139,6 +156,5 @@
             document.getElementById('details').style.display = 'block';
         }
     </script>
-
 </body>
 </html>
